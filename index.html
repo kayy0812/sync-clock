@@ -12,27 +12,42 @@
 <body>
     <div class="wrapper">
         <div class="circle circle--border">
-            <div class="circle__line circle__line--full">
-
-            </div>
         </div>
-
+        <div id="hour" style="--height: 35%" class="circle">
+            <div class="circle__line" style="--bg-color: #000">
+                <div class="circle__cursor-point"></div>
+            </div>
+            <div class="circle__central-point" style="--bg-color: #000"></div>
+        </div>
+        <div id="minute" style="--height: 45%" class="circle">
+            <div class="circle__line" style="--bg-color: #000">
+                <div class="circle__cursor-point"></div>
+            </div>
+            <div class="circle__central-point" style="--bg-color: #000"></div>
+        </div>
+        <div id="second" style="--height: 47%" class="circle">
+            <div class="circle__line" style="--bg-color: #000">
+                <div class="circle__cursor-point"></div>
+            </div>
+            <div class="circle__central-point" style="--bg-color: #000"></div>
+        </div>
     </div>
-    <script type="text/javascript">
-        const wrapper = document.querySelector('.wrapper');
 
-        var speed = 1;
-        for (var i = 5; i < 50; i += 2) {
-            speed *= 1.01;
-            var randomColor = Math.floor(Math.random()*16777215).toString(16);
-            wrapper.innerHTML += `
-            <div style="--duration: ${speed}s; --height: ${i}%" class="circle">
-                <div class="circle__line" style="--bg-color: #${randomColor}">
-                    <div class="circle__cursor-point"></div>
-                </div>
-            <div class="circle__central-point" style="--bg-color: #${randomColor}></div>   
-        </div>`;
+    <script type="text/javascript">
+        function Time() {
+            var date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+
+            var hourPercent = hour * (360 / 12) + 180 ;
+            var minutePercent = minute * (360 / 60) + 180 ;
+            var secondPercent = second * (360 / 60) + 180 ;
+            document.getElementById("hour").style.transform = `rotate(${hourPercent}deg) translate(-50%, -50%)`;
+            document.getElementById("minute").style.transform = `rotate(${minutePercent}deg) translate(-50%, -50%)`;
+            document.getElementById("second").style.transform = `rotate(${secondPercent}deg) translate(-50%, -50%)`;
         }
+        var time = setInterval(Time, 1000);
     </script>
 </body>
 
