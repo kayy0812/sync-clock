@@ -11,25 +11,24 @@
 
 <body>
     <div class="wrapper">
-        <div class="circle circle--border">
+        <div class="circle">
+            <img src="./bg.jpg" alt="">
+            <img src="./face.png" alt="">
         </div>
-        <div id="hour" style="--height: 35%" class="circle">
+        <div id="hour" style="--height: 28%" class="circle">
             <div class="circle__line" style="--bg-color: #000">
                 <div class="circle__cursor-point"></div>
             </div>
-            <div class="circle__central-point" style="--bg-color: #000"></div>
         </div>
-        <div id="minute" style="--height: 45%" class="circle">
+        <div id="minute" style="--height: 32%" class="circle">
             <div class="circle__line" style="--bg-color: #000">
                 <div class="circle__cursor-point"></div>
             </div>
-            <div class="circle__central-point" style="--bg-color: #000"></div>
         </div>
-        <div id="second" style="--height: 47%" class="circle">
+        <div id="second" style="--height: 34%" class="circle">
             <div class="circle__line" style="--bg-color: #000">
                 <div class="circle__cursor-point"></div>
             </div>
-            <div class="circle__central-point" style="--bg-color: #000"></div>
         </div>
     </div>
 
@@ -40,13 +39,14 @@
             var minute = date.getMinutes();
             var second = date.getSeconds();
 
-            var hourPercent = hour * (360 / 12) + 180 ;
-            var minutePercent = minute * (360 / 60) + 180 ;
-            var secondPercent = second * (360 / 60) + 180 ;
+            var hourPercent = hour * (360 / 12);
+            var minutePercent = minute * (360 / 60);
+            var secondPercent = second * (360 / 60);
             document.getElementById("hour").style.transform = `rotate(${hourPercent}deg) translate(-50%, -50%)`;
             document.getElementById("minute").style.transform = `rotate(${minutePercent}deg) translate(-50%, -50%)`;
             document.getElementById("second").style.transform = `rotate(${secondPercent}deg) translate(-50%, -50%)`;
         }
+        Time();
         var time = setInterval(Time, 1000);
     </script>
 </body>
